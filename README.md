@@ -1,5 +1,5 @@
 # nativescript-master-technology
-A class of generic functions that are useful in NativeScript
+A library of generic functions that are useful in NativeScript
 
 ## License
 
@@ -12,7 +12,11 @@ Please feel free to fork this repo and add other utility functions!!!
 
 ## Installation 
   
-Copy the repo's 'master-technology.js' file into your app folder.
+tns plugin add nativescript-master-technology
+
+## Notes:
+
+The first release of this library had a ton of DOM routines, these have been moved to there own plugin called 'nativescript-dom'
 
 
 ## Usage
@@ -20,12 +24,15 @@ Copy the repo's 'master-technology.js' file into your app folder.
 To use the  module you must first `require()` it:
 
 ```js
-require( "./master-technology.js" );
+require( "nativescript-master-technology" );
 ```
- 
+
+ All routines are global; you do not need to keep a reference to the library.
+
 ### Methods
 
 #### setImmediate(<function>);
+Push this task off to the next available time slice.
 
 #### Performance.now()
 Returns the current time stamp in NS or MS (depends on the platform)
@@ -43,36 +50,8 @@ Detects if you are running the debug version of the code on Android, on ios it r
 #### Process.isEmulator()
 Detects if you are running on an emulator
 
-#### processMessages()
+#### Process.processMessages()
 A Syncronous method to cause IOS & Android to handle their message loops.  
 
-#### getElementById(id)
-#### getElementsByClassName(className)
-#### getElementsByTagName(tagName)
-Like there Web DOM counterparts; returns elements based on the critera.
-
-#### view.getElementById(id)
-#### view.getElementsByClassName(className)
-#### view.getElementsByTagName(tagName)
-Like there Web DOM counterparts; returns the children elements based on the critera.
-
-#### view.classList.add(className)
-Add a class to the view's class list
-
-#### view.classList.remove(className)
-Removes a class from the view's class list
-
-#### view.classList.toggle(className[, force])
-Toggles a class name
-if force = true, will force adding the class name only.
-if force = false, will force removing the class name only.
-
-#### view.classList.item(id) 
-Returns the class name at that location.
-
-#### view.classList.contains(className)
-Returns true or false if the class name exists in the class list.
-
-
-
-
+#### console.keys()
+Prints out all the keys in the object

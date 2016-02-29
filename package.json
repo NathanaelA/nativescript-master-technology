@@ -1,0 +1,32 @@
+{
+  "name": "nativescript-master-technology",
+  "version": "1.0.1",
+  "description": "A Simple NativeScript Utility Library",
+  "main": "master-technology.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanaela/nativescript-master-technology.git"
+  },
+  "nativescript": {
+	"platforms": {
+		"android": "1.0.0",
+		"ios": "1.0.0"
+	}
+  },
+  "keywords": [
+    "NativeScript", "Process", "Performance", "utility"
+  ],
+  "author": {
+    "name": "Nathanael Anderson",
+    "email": "nathan@master-technology.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/nathanaela/nativescript-master-technology/blob/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/nathanaela/nativescript-master-technology/issues"
+  },
+  "homepage": "https://github.com/nathanaela/nativescript-master-technology",
+  "readmeFilename": "README.md"
+}
