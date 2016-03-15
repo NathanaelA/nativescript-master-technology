@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.2                                      Nathan@master-technology.com
+ * Version 0.0.3                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -70,7 +70,7 @@ if (!global.process.restart) {
                 okButtonText: "Quit!"
             }).then(function () {
                 //noinspection JSUnresolvedFunction,JSHint
-                exit();
+                exit(0);
             });
             return false;
         }
@@ -81,7 +81,7 @@ if (!global.process.exit) {
         if (global.android) {
             android.os.Process.killProcess(android.os.Process.myPid());
         } else if (global.ios) {
-            exit();
+            exit(0);
         }
 
     };
