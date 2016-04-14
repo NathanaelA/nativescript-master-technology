@@ -132,7 +132,7 @@ if (!global.process.isEmulator) {
         };
     } else if (global.ios) {
         global.process.isEmulator = function() {
-            return UIDevice.currentDevice().name.hasSuffix("Simulator");
+            return UIDevice.currentDevice().name.toLowerCase().indexOf("Simulator") !== -1;
         };
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "nativescript-master-technology",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Simple NativeScript Utility Library",
   "main": "master-technology.js",
   "repository": {
