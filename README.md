@@ -37,20 +37,20 @@ Push this task off to the next available time slice.
 #### Performance.now()
 Returns the current time stamp in NS or MS (depends on the platform)
 
-#### Process.restart()
+#### process.restart()
 IOS will tell the user they need to restart; and then exit.  (Apple doesn't appear to have any "restart" app ability)
 Android will quit and restart the app.
 
-#### Process.exit()
+#### process.exit()
 Exit the application
 
-#### Process.isDebug()
+#### process.isDebug()
 Detects if you are running the debug version of the code on Android, on ios it returns Process.isEmulator()
 
-#### Process.isEmulator()
+#### process.isEmulator()
 Detects if you are running on an emulator
 
-#### Process.processMessages()
+#### process.processMessages()
 A Syncronous method to cause IOS & Android to handle their message loops.  
 
 #### console.keys()
