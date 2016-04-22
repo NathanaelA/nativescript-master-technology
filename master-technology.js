@@ -117,6 +117,7 @@ if (!global.process.isDebug) {
           // So We will just check for if we are running on an emulator.
           // TODO: We might be able to use the ASN.1 info, see https://github.com/blindsightcorp/BSMobileProvision
 
+          // This is not defined in Debug mode as of TNS 1.8, need to check --release (No console available)
           // TODO: Check NSProcessInfo.processInfo().environment.objectForKey('BUILD_CONFIGURATION');
 
           return global.process.isEmulator();
@@ -132,7 +133,7 @@ if (!global.process.isEmulator) {
         };
     } else if (global.ios) {
         global.process.isEmulator = function() {
-            return UIDevice.currentDevice().name.toLowerCase().indexOf("Simulator") !== -1;
+            return UIDevice.currentDevice().name.toLowerCase().indexOf("simulator") !== -1;
         };
     }
 }
