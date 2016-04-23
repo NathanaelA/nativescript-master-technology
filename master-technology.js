@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.3                                      Nathan@master-technology.com
+ * Version 0.0.4                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -88,10 +88,23 @@ if (!global.process.exit) {
 }
 if (!global.process.isDebug) {
     if (global.android) {
+
+        var getAppSignatures = function() {
+            var application = require('application');
+            try {
+                var packageManager = application.android.context.getPackageManager();
+
+                // GET_SIGNATURES = 64
+                return packageManager.getPackageInfo(application.android.context.getPackageName(), 64).signatures;
+            } catch (err) {
+                return [];
+            }
+        };
+
         global.process.isDebug = function () {
             var DEBUG_PRINCIPAL = new javax.security.auth.x500.X500Principal("CN=Android Debug,O=Android,C=US");
             try {
-                var signatures = this.getAppSignatures();
+                var signatures = getAppSignatures();
                 var cf = java.security.cert.CertificateFactory.getInstance("X.509");
                 for (var i = 0; i < signatures.length; i++) {
                     // Convert back into a Certificate
