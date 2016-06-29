@@ -2,3 +2,6 @@ demo/
 .git/
 .gitignore
 .idea/
+*.tar
+*.tgz
+.npmignore

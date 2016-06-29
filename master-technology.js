@@ -10,7 +10,7 @@
 "use strict";
 
 /* jshint node: true, browser: true, unused: true, undef: true */
-/* global android, com, java, javax, exit, UIDevice, CFAbsoluteTimeGetCurrent, NSRunLoop, NSDate */
+/* global NSObject, NSString, global, android, com, java, javax, exit, UIDevice, CFAbsoluteTimeGetCurrent, NSRunLoop, NSDate */
 
 // global.android is already defined on android devices
 // We are defining global.ios on ios devices
