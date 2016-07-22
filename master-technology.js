@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.4                                      Nathan@master-technology.com
+ * Version 0.0.5                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -24,18 +24,18 @@ if (!global.setImmediate) {
 }
 
 /***
- * Creates a Performance.now() function
+ * Creates a performance.now() function
  */
-if (!global.Performance) {
-    global.Performance = {};
+if (!global.performance) {
+    global.performance = {};
 }
-if (!global.Performance.now) {
+if (!global.performance.now) {
     if (global.android) {
-        global.Performance.now = function () {
+        global.performance.now = function () {
             return java.lang.System.nanoTime() / 1000000;
         };
     } else if (global.ios) {
-        global.Performance.now = function() {
+        global.performance.now = function() {
             return CFAbsoluteTimeGetCurrent();
         };
     }

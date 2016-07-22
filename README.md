@@ -43,7 +43,7 @@ require( "nativescript-master-technology" );
 #### setImmediate(<function>);
 Push this task off to the next available time slice.
 
-#### Performance.now()
+#### performance.now()
 Returns the current time stamp in NS or MS (depends on the platform)
 
 #### process.restart()
@@ -64,3 +64,6 @@ A Syncronous method to cause IOS & Android to handle their message loops.
 
 #### console.keys()
 Prints out all the keys in the object
+
+### Breaking Changes
+Renamed Perfomance.now to performance.now -- not sure why I messed up the name in the first place; but the proper name for compatibility sake is "perfomance.now()"...
