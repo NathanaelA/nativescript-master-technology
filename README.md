@@ -65,5 +65,21 @@ A Syncronous method to cause IOS & Android to handle their message loops.
 #### console.keys()
 Prints out all the keys in the object
 
+*Optionally*: You can pass `true` as second argument to also print the value:
+
+```
+var data = {
+  id: 1,
+  name: 'Nathan'
+};
+console.keys(data, true);
+
+// id
+// 1
+// name
+// Nathan
+
+```
+
 ### Breaking Changes
 Renamed Perfomance.now to performance.now -- not sure why I messed up the name in the first place; but the proper name for compatibility sake is "perfomance.now()"...
