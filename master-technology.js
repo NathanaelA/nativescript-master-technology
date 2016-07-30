@@ -219,13 +219,19 @@ if (!global.process.processMessages) {
 }
 
 if (typeof global.console.keys === 'undefined') {
-    console.keys = function(data) {
+    console.keys = function(data, printValue) {
         if (typeof data === "string") {
             console.log(data); return;
         }
         console.log("=========[ Keys ]==========");
         for(var key in data) {
-            if (data.hasOwnProperty(key)) console.log(key);
+          if (data.hasOwnProperty(key)) {
+            if (printValue) {
+              console.log(key + ':  ', data[key]);
+            } else {
+              console.log(key);
+            }
+          }
         }
         console.log("===========================");
     };
