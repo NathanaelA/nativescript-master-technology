@@ -74,10 +74,8 @@ var data = {
 };
 console.keys(data, true);
 
-// id
-// 1
-// name
-// Nathan
+// id:  1
+// name:  Nathan
 
 ```
 
