@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.5                                      Nathan@master-technology.com
+ * Version 0.0.6                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -21,6 +21,7 @@ if (global.NSObject && global.NSString && typeof global.ios === "undefined") {
 
 if (!global.setImmediate) {
     global.setImmediate = global.setTimeout;
+    global.clearImmediate = global.clearTimeout;
 }
 
 /***

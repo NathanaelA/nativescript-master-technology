@@ -43,6 +43,9 @@ require( "nativescript-master-technology" );
 #### setImmediate(<function>);
 Push this task off to the next available time slice.
 
+### clearImmediate(id)
+Clears an timer scheduled via setImmediate...
+
 #### performance.now()
 Returns the current time stamp in NS or MS (depends on the platform)
 
@@ -80,4 +83,4 @@ console.keys(data, true);
 ```
 
 ### Breaking Changes
-Renamed Perfomance.now to performance.now -- not sure why I messed up the name in the first place; but the proper name for compatibility sake is "perfomance.now()"...
+Renamed Performance.now to performance.now -- not sure why I messed up the name in the first place; but the proper name for compatibility sake is "performance.now()"...
