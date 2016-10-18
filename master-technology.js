@@ -8,6 +8,8 @@
  * Version 0.0.6                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
+var utils = require("utils/utils");
+var getter = utils.ios.getter;
 
 /* jshint node: true, browser: true, unused: true, undef: true */
 /* global NSObject, NSString, global, android, com, java, javax, exit, UIDevice, CFAbsoluteTimeGetCurrent, NSRunLoop, NSDate */
@@ -36,7 +38,7 @@ if (!global.performance.now) {
             return java.lang.System.nanoTime() / 1000000;
         };
     } else if (global.ios) {
-        global.performance.now = function() {
+        global.performance.now = function () {
             return CFAbsoluteTimeGetCurrent();
         };
     }
@@ -51,7 +53,7 @@ if (!global.process) {
 if (!global.process.restart) {
     global.process.restart = function (msg) {
         var application = require('application');
-        var dialogs= require('ui/dialogs');
+        var dialogs = require('ui/dialogs');
         if (global.android) {
             //noinspection JSUnresolvedFunction,JSUnresolvedVariable
             var mStartActivity = new android.content.Intent(application.android.context, com.tns.NativeScriptActivity.class);
@@ -78,7 +80,7 @@ if (!global.process.restart) {
     };
 }
 if (!global.process.exit) {
-    global.process.exit = function() {
+    global.process.exit = function () {
         if (global.android) {
             android.os.Process.killProcess(android.os.Process.myPid());
         } else if (global.ios) {
@@ -90,7 +92,7 @@ if (!global.process.exit) {
 if (!global.process.isDebug) {
     if (global.android) {
 
-        var getAppSignatures = function() {
+        var getAppSignatures = function () {
             var application = require('application');
             try {
                 var packageManager = application.android.context.getPackageManager();
@@ -126,28 +128,29 @@ if (!global.process.isDebug) {
             return false;
         };
     } else if (global.ios) {
-        global.process.isDebug = function() {
-          // TODO: At this point their doesn't seem to be an easy way to determine if the app is debuggable on iOS from the environment
-          // So We will just check for if we are running on an emulator.
-          // TODO: We might be able to use the ASN.1 info, see https://github.com/blindsightcorp/BSMobileProvision
+        global.process.isDebug = function () {
+            // TODO: At this point their doesn't seem to be an easy way to determine if the app is debuggable on iOS from the environment
+            // So We will just check for if we are running on an emulator.
+            // TODO: We might be able to use the ASN.1 info, see https://github.com/blindsightcorp/BSMobileProvision
 
-          // This is not defined in Debug mode as of TNS 1.8, need to check --release (No console available)
-          // TODO: Check NSProcessInfo.processInfo().environment.objectForKey('BUILD_CONFIGURATION');
+            // This is not defined in Debug mode as of TNS 1.8, need to check --release (No console available)
+            // TODO: Check NSProcessInfo.processInfo().environment.objectForKey('BUILD_CONFIGURATION');
 
-          return global.process.isEmulator();
+            return global.process.isEmulator();
         };
     }
 }
 if (!global.process.isEmulator) {
     if (global.android) {
-        global.process.isEmulator = function() {
+        global.process.isEmulator = function () {
             var res = android.os.Build.FINGERPRINT;
             if (res.indexOf("vbox86") >= 0 || res.indexOf("generic") >= 0) { return true; }
             return false;
         };
     } else if (global.ios) {
-        global.process.isEmulator = function() {
-            return UIDevice.currentDevice().name.toLowerCase().indexOf("simulator") !== -1;
+        global.process.isEmulator = function () {
+            console.log('Juan, Called the getter');
+            return getter(UIDevice, UIDevice.currentDevice).name.toLowerCase().indexOf("simulator") !== -1;
         };
     }
 }
@@ -156,10 +159,10 @@ if (!global.process.isEmulator) {
 if (!global.process.processMessages) {
     if (global.android) {
         var platform = require('platform');
-        var nextMethod, targetField, prepared=false;
+        var nextMethod, targetField, prepared = false;
         var sdkVersion = parseInt(platform.device.sdkVersion);
 
-        var prepareMethods = function() {
+        var prepareMethods = function () {
             var clsMsgQueue = java.lang.Class.forName("android.os.MessageQueue");
             var clsMsg = java.lang.Class.forName("android.os.Message");
 
@@ -185,14 +188,14 @@ if (!global.process.processMessages) {
             prepared = true;
         };
 
-        global.process.processMessages = function() {
+        global.process.processMessages = function () {
             var quit = false, counter = 0;
             if (!prepared) { prepareMethods(); }
 
             var queue = android.os.Looper.myQueue(), msg;
-            setTimeout(function() { quit = true;}, 250);
+            setTimeout(function () { quit = true; }, 250);
 
-            while (!quit ) {
+            while (!quit) {
 
                 counter++;
                 msg = nextMethod.invoke(queue, null);
@@ -213,26 +216,26 @@ if (!global.process.processMessages) {
             }
         };
     } else if (global.ios) {
-        global.process.processMessages = function() {
+        global.process.processMessages = function () {
             NSRunLoop.currentRunLoop().runUntilDate(NSDate.dateWithTimeIntervalSinceNow(0.1));
         };
     }
 }
 
 if (typeof global.console.keys === 'undefined') {
-    console.keys = function(data, printValue) {
+    console.keys = function (data, printValue) {
         if (typeof data === "string") {
             console.log(data); return;
         }
         console.log("=========[ Keys ]==========");
-        for(var key in data) {
-          if (data.hasOwnProperty(key)) {
-            if (printValue) {
-              console.log(key + ':  ', data[key]);
-            } else {
-              console.log(key);
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                if (printValue) {
+                    console.log(key + ':  ', data[key]);
+                } else {
+                    console.log(key);
+                }
             }
-          }
         }
         console.log("===========================");
     };
