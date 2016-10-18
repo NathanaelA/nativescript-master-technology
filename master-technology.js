@@ -147,10 +147,21 @@ if (!global.process.isEmulator) {
         };
     } else if (global.ios) {
         global.process.isEmulator = function() {
-            return UIDevice.currentDevice().name.toLowerCase().indexOf("simulator") !== -1;
+            return iosProperty(UIDevice, UIDevice.currentDevice).name.toLowerCase().indexOf("simulator") !== -1;
         };
     }
 }
+
+function iosProperty(theClass, theProperty) {
+    if (typeof theProperty === "function") {
+        // xCode 7 and below
+        return theProperty.call(theClass);
+    } else {
+        // xCode 8+
+        return theProperty;
+    }
+}
+
 
 // Thanks to the NativeScript guys (Yavor Georgiev & Georgi Atanasov) for the basis of the processMessages code
 if (!global.process.processMessages) {
