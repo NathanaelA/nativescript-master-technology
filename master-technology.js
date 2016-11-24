@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.6                                      Nathan@master-technology.com
+ * Version 0.0.7                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -54,7 +54,7 @@ if (!global.process.restart) {
         var dialogs= require('ui/dialogs');
         if (global.android) {
             //noinspection JSUnresolvedFunction,JSUnresolvedVariable
-            var mStartActivity = new android.content.Intent(application.android.context, com.tns.NativeScriptActivity.class);
+            var mStartActivity = new android.content.Intent(application.android.context, application.android.startActivity.getClass());
             var mPendingIntentId = parseInt(Math.random() * 100000, 10);
             //noinspection JSUnresolvedFunction,JSUnresolvedVariable
             var mPendingIntent = android.app.PendingIntent.getActivity(application.android.context, mPendingIntentId, mStartActivity, android.app.PendingIntent.FLAG_CANCEL_CURRENT);
