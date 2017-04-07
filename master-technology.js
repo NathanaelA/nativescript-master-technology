@@ -80,7 +80,8 @@ if (!global.process.restart) {
 if (!global.process.exit) {
 	global.process.exit = function() {
 		if (global.android) {
-			android.os.Process.killProcess(android.os.Process.myPid());
+			const application = require('application');
+			application.android.foregroundActivity.finish();
 		} else if (global.ios) {
 			exit(0);
 		}
