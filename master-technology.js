@@ -5,7 +5,7 @@
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 0.0.8                                      Nathan@master-technology.com
+ * Version 0.0.9                                      Nathan@master-technology.com
  *********************************************************************************/
 "use strict";
 
@@ -13,7 +13,7 @@
 /* global NSObject, NSString, global, android, com, java, javax, exit, UIDevice, CACurrentMediaTime, NSRunLoop, NSDate, require */
 
 // global.android is already defined on android devices
-// We are defining global.ios on ios devices
+// We are defining global.ios on ios devices because the ios team refuses to do it
 if (global.NSObject && global.NSString && typeof global.ios === "undefined") {
 	global.ios = true;
 	Object.freeze(global.ios);
