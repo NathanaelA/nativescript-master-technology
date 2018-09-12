@@ -108,7 +108,7 @@ if (!global.process.isDebug) {
 			try {
 				const signatures = getAppSignatures();
 				const cf = java.security.cert.CertificateFactory.getInstance("X.509");
-				for (let i = 0; i < signatures.length; i++) {
+				for (var i = 0; i < signatures.length; i++) {
 					// Convert back into a Certificate
 					const stream = new java.io.ByteArrayInputStream(signatures[i].toByteArray());
 					const cert = cf.generateCertificate(stream);
@@ -203,7 +203,7 @@ function getContext() {
 if (!global.process.processMessages) {
 	if (global.android) {
 		const platform = require('platform');
-		let nextMethod, targetField, prepared=false;
+		var nextMethod, targetField, prepared=false;
 		const sdkVersion = parseInt(platform.device.sdkVersion);
 
 		const prepareMethods = function() {
@@ -211,7 +211,7 @@ if (!global.process.processMessages) {
 			const clsMsg = java.lang.Class.forName("android.os.Message");
 
 			const methods = clsMsgQueue.getDeclaredMethods();
-			let i;
+			var i;
 			for (i = 0; i < methods.length; i++) {
 				if (methods[i].getName() === "next") {
 					nextMethod = methods[i];
@@ -220,7 +220,7 @@ if (!global.process.processMessages) {
 				}
 			}
 
-			let fields = clsMsg.getDeclaredFields();
+			var fields = clsMsg.getDeclaredFields();
 			for (i = 0; i < fields.length; i++) {
 				if (fields[i].getName() === "target") {
 					targetField = fields[i];
@@ -233,10 +233,10 @@ if (!global.process.processMessages) {
 		};
 
 		global.process.processMessages = function() {
-			let quit = false, counter = 0;
+			var quit = false, counter = 0;
 			if (!prepared) { prepareMethods(); }
 
-			let queue = android.os.Looper.myQueue(), msg;
+			var queue = android.os.Looper.myQueue(), msg;
 			setTimeout(function() { quit = true;}, 250);
 
 			while (!quit ) {
