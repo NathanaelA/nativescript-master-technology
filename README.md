@@ -39,6 +39,8 @@ require( "nativescript-master-technology" );
 
  All routines are global; you do not need to keep a reference to the library.
 
+ If you get TypeScript complaining about process not being defined, then put `/// <reference path="./node_modules/nativescript-master-technology/references.d.ts" />` in your `references.d.ts`.
+
 ### Methods
 
 #### setImmediate(<function>);
