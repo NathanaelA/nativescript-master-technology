@@ -1,11 +1,11 @@
 {
   "name": "nativescript-master-technology",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A Simple NativeScript Utility Library",
   "main": "master-technology.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nathanaela/nativescript-master-technology.git"
+    "url": "https://git.proplugins.org/proplugins/nativescript-master-technology.git"
   },
   "nativescript": {
 	"platforms": {
@@ -28,13 +28,13 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/nathanaela/nativescript-master-technology/blob/master/LICENSE"
+    "url": "https://git.proplugins.org/proplugins/nativescript-master-technology/blob/master/LICENSE"
   },
   "bugs": {
-    "url": "https://github.com/nathanaela/nativescript-master-technology/issues"
+    "url": "https://git.proplugins.org/proplugins/nativescript-master-technology/issues"
   },
-  "homepage": "https://github.com/nathanaela/nativescript-master-technology",
-  "readmeFilename": "README.md"
+  "homepage": "https://git.proplugins.org/proplugins/nativescript-master-technology",
+  "readmeFilename": "README.md",
   "scripts": {
     "postinstall": "node postinstall.js || echo \"ignore\""
   }
