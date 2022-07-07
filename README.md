@@ -1,3 +1,7 @@
+# Archived
+See: https://fluentreports.com/blog/?p=1434
+
+
 <a href="https://proplugins.org"><img src="unmaintained.svg" height="30px" width="100%"></a>
 
 # NativeScript-Master-Technology
